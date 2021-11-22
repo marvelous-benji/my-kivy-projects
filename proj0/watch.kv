@@ -1,0 +1,93 @@
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import datetime datetime.datetime
+
+
+<Timer>:
+    timer1:timer1
+    timer2:timer2
+    player1:player1
+    player2:player2
+    MDBoxLayout:
+        id:player1
+        md_bg_color: get_color_from_hex("#000000")
+        orientation:"vertical"
+        size_hint_x:0.4
+
+        MDLabel:
+            id:timer1
+            text: "%s:%s.[sub]%s[/sub]"%("2","00","000")
+            markup:True
+            theme_text_color:"Custom"
+            text_color: get_color_from_hex("#52B999")
+            halign: "center"
+            font_name: "Oxygen-Regular.ttf"
+            font_size:"50sp"
+        MDTextButton:
+            text:"[b]Tap to snooze[/b]"
+            markup: True
+            theme_text_color:"Custom"
+            text_color: get_color_from_hex("#52B999")
+            pos_hint:{"center_x":0.5}
+            font_name: "Oxygen-Bold.ttf"
+            font_size:"15sp"
+        MDLabel:
+            text:""
+            size_hint_y:0.3
+    MDRelativeLayout:
+        canvas:
+            Color:
+                rgba:get_color_from_hex("#CF3402")
+            Line:
+                points:0,0,0,self.height,self.width,self.height,self.width,0,0,0
+                width:1
+        md_bg_color: get_color_from_hex("#000000")
+        size_hint_x:0.2
+        orientation:"vertical"
+        CustomBtn:
+            id:pause_btn
+            text:"Pause"
+            size_hint:0.95, 0.2
+            pos_hint:{"center_x":0.5,"top":0.9}
+            on_release: root.pause_timer()
+        CustomBtn:
+            id:reset_btn
+            text:"Reset"
+            size_hint:0.95, 0.2
+            pos_hint:{"center_x":0.5,"y":0.1}
+            on_release: root.reset_timer()
+            
+    MDBoxLayout:
+        id:player2
+        md_bg_color: get_color_from_hex("#000000")
+        orientation:"vertical"
+        size_hint_x:0.4
+
+        MDLabel:
+            id:timer2
+            text: "%s:%s.[sub]%s[/sub]"%("2","00","000")
+            markup:True
+            theme_text_color:"Custom"
+            text_color: get_color_from_hex("#52B999")
+            halign: "center"
+            font_name: "Oxygen-Regular.ttf"
+            font_size:"50sp"
+        MDTextButton:
+            text:"[b]Tap to snooze[/b]"
+            markup: True
+            theme_text_color:"Custom"
+            text_color: get_color_from_hex("#52B999")
+            pos_hint:{"center_x":0.5}
+            font_name: "Oxygen-Bold.ttf"
+            font_size:"15sp"
+        MDLabel:
+            text:""
+            size_hint_y:0.3
+
+
+
+<CustomBtn@MDFillRoundFlatButton>:
+    font_size:"20sp"
+    theme_text_color:"Custom"
+    text_color: get_color_from_hex("#FFFFFF")
+    font_name:"Oxygen-Bold.ttf"
+    md_bg_color:get_color_from_hex("#CF3402")
